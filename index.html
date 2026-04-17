@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classmate List</title>
+
+    <style>
+        body {
+            background-color: #f3e8ff;
+            font-family: Arial;
+            padding: 30px;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            max-width: 650px;
+            margin: auto;
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #7c3aed;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 6px;
+            margin: 5px 0;
+        }
+
+        button {
+            background-color: #7c3aed;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 6px;
+            align-items: center;
+        }
+
+        #output {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Grade 10 - Sapphire Classmate List</h2>
+
+    <button onclick="showList()">Show Classmates</button>
+
+    <br><br>
+
+    <input id="name" placeholder="Enter name">
+    <input id="subject" placeholder="Favorite subject(s)">
+
+    <button onclick="validate()">Add classmate</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+class Classmate {
+    constructor(name, subject) {
+        this.name = name;
+        this.subject = subject;
+    }
+
+    introduce() {
+        return this.name + " – " + this.subject;
+    }
+}
+
+// YOUR CLASS LIST
+let classmates = [
+    new Classmate("Balagat, Michael", "SCI, ENG"),
+    new Classmate("Bernardo, Miko", ""),
+    new Classmate("Caguiron, Carriena", ""),
+    new Classmate("Calida, Lorenzo", ""),
+    new Classmate("Chan, Jazmar", "SS, PE"),
+    new Classmate("Cruz, Rohann", ""),
+    new Classmate("David, Terd", "SS, SCI"),
+    new Classmate("De Guzman, Nia", "Science"),
+    new Classmate("De Guzman, Uno", "SS, Math"),
+    new Classmate("Francisco, Annika", "PE, English"),
+    new Classmate("Kaur, Nav", ""),
+    new Classmate("Laconsay, Heleina", ""),
+    new Classmate("Lepasana, Khen", "PE"),
+    new Classmate("Lopez, Liam", ""),
+    new Classmate("Lucman, Mohammad", ""),
+    new Classmate("Malapitan, Caleb", ""),
+    new Classmate("Manahan, Samantha", "SCI"),
+    new Classmate("Manuel, Elyze", "SCI, Math"),
+    new Classmate("Mendoza, Matthew", "SS, PE"),
+    new Classmate("Palafox, Coby", "PE, SS"),
+    new Classmate("Ramirez, Alfiona", "Math"),
+    new Classmate("Reynoso, Izeck", ""),
+    new Classmate("Santos, Cas", "PE"),
+    new Classmate("Santos, Rafa", "SS"),
+    new Classmate("Tolentino, Kelsey", ""),
+    new Classmate("Toribio, Sasha", ""),
+    new Classmate("Valdez, David", "PE, SCI")
+];
+
+function showList() {
+    let output = "";
+
+    for (let c of classmates) {
+        output += c.introduce() + "<br>";
+    }
+
+    document.getElementById("output").innerHTML = output;
+}
+
+function validate() {
+    let name = document.getElementById("name").value;
+    let subject = document.getElementById("subject").value;
+
+    classmates.push(new Classmate(name, subject));
+
+    showList();
+}
+</script>
+
+</body>
+</html>
